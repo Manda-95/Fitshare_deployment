@@ -1,47 +1,72 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div id="app">
+    <h1>Création d'un programme sportif</h1>
+    <hr />
+    <div class="split-container">
+      
+      <div class="left-panel">
+        <p><strong>Theme :</strong></p>
+        <input type="radio" id="musculation" name="activity" value="Musculation" v-model="picked" @change="fetchExercises(3)">
+        <label for="musculation">Musculation</label>
+        <br>
+        <input type="radio" id="athlétisme" name="activity" value="Athlétisme" v-model="picked" @change="fetchExercises(1)">
+        <label for="athlétisme">Athlétisme</label>
+        <br>
+        <input type="radio" id="natation" name="activity" value="Natation" v-model="picked" @change="fetchExercises(2)">
+        <label for="natation">Natation</label>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <div v-if="picked === 'Musculation'" class="exercises">
+          <p><strong>Exercices :</strong></p>
+          <ul>
+            <li v-for="exercise in exercises" :key="exercise.name">{{ exercise.name }}</li>
+          </ul>
+        </div>
+
+        <div v-if="picked === 'Athlétisme'" class="exercises">
+          <p><strong>Exercices :</strong></p>
+          <ul>
+            <li v-for="exercise in exercises" :key="exercise.name">{{ exercise.name }}</li>
+          </ul>
+        </div>
+
+        <div v-if="picked === 'Natation'" class="exercises">
+          <p><strong>Exercices :</strong></p>
+          <ul>
+            <li v-for="exercise in exercises" :key="exercise.name">{{ exercise.name }}</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="right-panel">
+        <p><strong>Theme :</strong></p>
+        <p>{{ picked || "Aucune activité sélectionnée" }}</p>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<script>
+export default {
+  data() {
+    return {
+      picked: "", 
+      exercises: [], 
+    };
+  },
+  methods: {
+    async fetchExercises(categoryId) {
+      try {
+        const response = await fetch(`http://localhost:8000/exercises/category/${categoryId}`);
+        if (response.ok) {
+          this.exercises = await response.json();
+        } else {
+          console.error("Erreur lors de la récupération des exercices.");
+        }
+      } catch (error) {
+        console.error("Erreur réseau :", error);
+      }
+    },
+  },
+};
+</script>
