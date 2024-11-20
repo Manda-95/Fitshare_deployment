@@ -1,0 +1,63 @@
+#app {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 2px solid #ccc;
+  }
+  
+  .split-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+  }
+  
+  .left-panel, .right-panel {
+    width: 45%;
+  }
+  
+  .left-panel {
+    text-align: left;
+  }
+  
+  .right-panel {
+    text-align: left;
+    border-left: 2px solid #ccc;
+    padding-left: 20px;
+  }
+  
+  label {
+    font-size: 18px;
+    margin-left: 5px;
+  }
+  
+  .exercises {
+    margin-top: 20px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+
+  .serie-input, .reps-input, .custom-input {
+    margin-left: 5px;
+    width: 60px;
+  }
+  .add-exercise-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .custom-checkbox {
+    margin-right: 5px;
+  }

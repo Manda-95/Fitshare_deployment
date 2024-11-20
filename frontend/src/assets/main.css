@@ -1,10 +1,9 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
 a,
@@ -32,4 +31,49 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+}
+
+
+h1 {
+  margin-bottom: 10px;
+}
+
+hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 2px solid #ccc;
+}
+
+.split-container {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  margin: 20px;
+}
+
+.left-panel, .right-panel {
+  width: 45%; 
+}
+
+.left-panel {
+  text-align: left; 
+}
+
+.right-panel {
+  text-align: left;
+  border-left: 2px solid #ccc; 
+  padding-left: 20px; 
+}
+
+label {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.exercises {
+  margin-top: 20px;
 }
