@@ -1,7 +1,6 @@
 backend/__pycache__/
 backend/auth/__pycache__/
 backend/users/__pycache__/
-
 # Logs
 logs
 *.log
@@ -35,3 +34,4 @@ coverage
 
 backend/.venv/
 backend/.venv/bin/activate.csh
+
