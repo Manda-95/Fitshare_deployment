@@ -1,0 +1,3 @@
+backend/__pycache__/
+backend/auth/__pycache__/
+backend/users/__pycache__/
