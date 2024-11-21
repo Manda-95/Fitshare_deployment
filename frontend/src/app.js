@@ -19,6 +19,13 @@ export default {
           console.error("Erreur réseau :", error);
         }
       },
+      addCustomExercise() {
+        this.customExercises.push({
+          name: "",
+          series: "",
+          repetitions: "",
+        });
+      },
     },
   };
   
