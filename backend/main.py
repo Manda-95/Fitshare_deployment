@@ -12,6 +12,8 @@ from users.routes import router as user_router
 from fastapi.middleware.cors import CORSMiddleware
 from category.routes import router as category_router
 from exercises.routes import router as exercises_router
+from goal.routes import router as goal_router
+from training.routes import router as training_router
 
 SECRET_KEY = "2e6f99cc653bd5ba9117e5e24d76bbc6b7b190681b5f90769ebaf8e5905f9526"
 ALGORITHM = "HS256"
@@ -42,4 +44,6 @@ app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
 app.include_router(user_router, prefix="/users", tags=["Users"])
 app.include_router(category_router, prefix="/category", tags=["Category"])
 app.include_router(exercises_router, prefix="/exercises", tags=["Exercise"])
+app.include_router(goal_router, prefix="/goal", tags=["Goal"])
+app.include_router(training_router, prefix="/trainings", tags=["Training"])
 
