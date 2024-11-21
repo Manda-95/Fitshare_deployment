@@ -1,6 +1,5 @@
-backend/__pycache__/
-backend/auth/__pycache__/
-backend/users/__pycache__/
+__pycache__/
+
 # Logs
 logs
 *.log
