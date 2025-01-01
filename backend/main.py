@@ -1,12 +1,7 @@
-from typing import Union
-from datetime import datetime, timedelta, timezone
-from fastapi import Depends, FastAPI, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi import FastAPI
+from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
-from pydantic import BaseModel
-from sqlmodel import Field, Session, SQLModel, select
-import jwt
-from database import create_db_and_tables, get_db
+from database import create_db_and_tables
 from auth.routes import router as auth_router
 from users.routes import router as user_router
 from fastapi.middleware.cors import CORSMiddleware
@@ -14,10 +9,8 @@ from category.routes import router as category_router
 from exercises.routes import router as exercises_router
 from goal.routes import router as goal_router
 from training.routes import router as training_router
-
-SECRET_KEY = "2e6f99cc653bd5ba9117e5e24d76bbc6b7b190681b5f90769ebaf8e5905f9526"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+from comment.routes import router as comment_router
+from event.routes import router as event_router
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
@@ -46,4 +39,6 @@ app.include_router(category_router, prefix="/category", tags=["Category"])
 app.include_router(exercises_router, prefix="/exercises", tags=["Exercise"])
 app.include_router(goal_router, prefix="/goal", tags=["Goal"])
 app.include_router(training_router, prefix="/trainings", tags=["Training"])
+app.include_router(comment_router, prefix="/comments", tags=["Comments"])
+app.include_router(event_router, prefix="/events", tags=["Events"])
 

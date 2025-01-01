@@ -6,7 +6,7 @@ from database import get_db
 from auth.schemas import Token
 from datetime import timedelta
 
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 9999
 
 router = APIRouter()
 

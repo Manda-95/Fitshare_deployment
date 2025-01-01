@@ -1,15 +1,25 @@
 <template>
-    <div class="login-page">
-      <div class="login-container">
-        <h1>Connexion</h1>
-        <form @submit.prevent="handleLogin">
+    <div class="register-page">
+      <div class="register-container">
+        <h1>Créer un compte</h1>
+        <form @submit.prevent="handleRegister">
           <div class="form-group">
             <label for="username">Nom d'utilisateur</label>
             <input
               type="text"
               id="username"
-              v-model="username"
+              v-model="formData.username"
               placeholder="Entrez votre nom d'utilisateur"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              v-model="formData.email"
+              placeholder="Entrez votre email"
               required
             />
           </div>
@@ -18,15 +28,25 @@
             <input
               type="password"
               id="password"
-              v-model="password"
+              v-model="formData.password"
               placeholder="Entrez votre mot de passe"
               required
             />
           </div>
-          <button type="submit" class="btn">Se connecter</button>
-          <p class="register-link">
-            Pas encore inscrit ?
-            <router-link to="/register">Créer un compte</router-link>
+          <div class="form-group">
+            <label for="confirm-password">Confirmer le mot de passe</label>
+            <input
+              type="password"
+              id="confirm-password"
+              v-model="formData.confirmPassword"
+              placeholder="Confirmez votre mot de passe"
+              required
+            />
+          </div>
+          <button type="submit" class="btn">S'inscrire</button>
+          <p class="login-link">
+            Vous avez déjà un compte ?
+            <router-link to="/login">Connectez-vous ici</router-link>
           </p>
         </form>
       </div>
@@ -34,28 +54,41 @@
   </template>
   
   <script>
-  import { useAuthStore } from "@/store/auth";
+  import { register } from "@/api/auth";
   
   export default {
-    name: "Login",
+    name: "Register",
     data() {
       return {
-        username: "",
-        password: "",
+        formData: {
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        },
       };
     },
     methods: {
-      async handleLogin() {
-      const authStore = useAuthStore();
-      await authStore.authenticate(this.username, this.password);
-      this.$router.push("/training");
+      async handleRegister() {
+        if (this.formData.password !== this.formData.confirmPassword) {
+          alert("Les mots de passe ne correspondent pas.");
+          return;
+        }
+  
+        await register({
+          username: this.formData.username,
+          email: this.formData.email,
+          password: this.formData.password,
+        });
+        alert("Inscription réussie ! Vous pouvez maintenant vous connecter.");
+        this.$router.push("/login");
       },
     },
   };
   </script>
   
   <style scoped>
-  .login-page {
+  .register-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +96,7 @@
     background-color: #f4f4f4;
   }
   
-  .login-container {
+  .register-container {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -97,7 +130,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    box-sizing: border-box
   }
   
   input:focus {
@@ -120,17 +152,17 @@
     background-color: #0056b3;
   }
   
-  .register-link {
+  .login-link {
     margin-top: 1rem;
     font-size: 0.9rem;
   }
   
-  .register-link a {
+  .login-link a {
     color: #007bff;
     text-decoration: none;
   }
   
-  .register-link a:hover {
+  .login-link a:hover {
     text-decoration: underline;
   }
   </style>
