@@ -3,7 +3,7 @@
 #app {
   text-align: center;
   font-family: Arial, sans-serif;
-  margin: 20px;
+
 }
 
 a,
@@ -14,23 +14,9 @@ a,
   padding: 3px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
 }
 
 
@@ -44,26 +30,6 @@ hr {
   border-top: 2px solid #ccc;
 }
 
-.split-container {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: flex-start; 
-  margin: 20px;
-}
-
-.left-panel, .right-panel {
-  width: 45%; 
-}
-
-.left-panel {
-  text-align: left; 
-}
-
-.right-panel {
-  text-align: left;
-  border-left: 2px solid #ccc; 
-  padding-left: 20px; 
-}
 
 label {
   font-size: 18px;

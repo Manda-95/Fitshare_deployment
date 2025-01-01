@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, status
 from sqlmodel import Field, Session, SQLModel, select
 from database import get_db
 from fastapi import APIRouter, Depends
-from exercises.schemas import ExerciseResponse, ExerciseCreate
+from schemas import ExerciseResponse, ExerciseCreate
 from models import Exercise
 
 router = APIRouter()

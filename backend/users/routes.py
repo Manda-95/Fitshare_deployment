@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlmodel import Session
 from database import get_db
 from models import User
-from users.schemas import UserResponse, UserCreate
+from schemas import UserResponse, UserCreate
 from auth.utils import get_password_hash, get_current_user
 from fastapi import APIRouter, Depends
 
