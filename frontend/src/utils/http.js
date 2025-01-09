@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: import.meta.env.VUE_APP_API_BASE_URL,
+  baseURL: 'https://fitsharedeployment-production.up.railway.app/',
 });
 
 http.interceptors.request.use((config) => {
