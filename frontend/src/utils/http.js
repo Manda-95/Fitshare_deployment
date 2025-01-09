@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: 'https://fitsharedeployment-production.up.railway.app/',
+  baseURL: 'https://fitsharedeployment-production.up.railway.app',
 });
 
 http.interceptors.request.use((config) => {

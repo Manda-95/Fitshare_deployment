@@ -2,7 +2,7 @@ import http from "@/utils/http";
 
 export const getTrainings = async () => {
   try {
-    const response = await http.get("/trainings");
+    const response = await http.get("/trainings/");
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la récupération des programmes :", error.response || error);
