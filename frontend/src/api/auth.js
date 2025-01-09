@@ -18,7 +18,7 @@ export const login = (username, password) => {
 
 export const register = (data) => {
   try{
-    return axios.post("/users", data, {
+    return axios.post("/users/", data, {
       headers: {
         "Content-Type": "application/json",
       },

@@ -72,9 +72,9 @@
             </v-card-text>
           </v-card>
           <v-card outlined class="mb-4">
-            <v-card-title>Déscription</v-card-title>
+            <v-card-title>Description</v-card-title>
             <v-card-text>
-              <v-textarea v-model="description" label="Déscription du programme"></v-textarea>
+              <v-textarea v-model="description" label="Description du programme"></v-textarea>
             </v-card-text>
           </v-card>
 

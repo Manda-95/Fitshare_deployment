@@ -23,6 +23,7 @@ export const getTrainingDetails = async (trainingId) => {
 
 export const postTraining = async (trainingData) => {
   if (!trainingData.title || !trainingData.goal_id || !trainingData.category_id || !trainingData.difficulty) {
+    alert("Certains champs requis sont manquants.");
     throw new Error("Certains champs requis sont manquants.");
   }
 
